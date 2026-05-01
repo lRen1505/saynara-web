@@ -27,6 +27,13 @@
     margin: 0 auto;
   }
 
+.heroCard img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
   .base {
     width: 170px;
     position: relative;
