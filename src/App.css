@@ -1,109 +1,79 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background: #f8fbff;
-  color: #102033;
 }
 
-.navbar {
-  padding: 18px 8%;
+
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 15px;
+  background: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: white;
+  z-index: 10;
 }
 
-.navLinks {
+.nav-links {
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  list-style: none;
 }
-
-.navLinks a {
-  text-decoration: none;
-  color: #102033;
-  font-weight: 600;
-}
-
 
 
 .hero {
-  padding: 100px 8%;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  align-items: center;
+  height: 100vh;
   background: linear-gradient(135deg, #1e4f8a, #3b82f6);
   color: white;
-  }
-
-.heroText h1 {
-  font-size: 52px;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  color: white;
-}
-
-.heroText p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #e5e7eb;
-}
-
-.heroCard img {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-.heroButtons {
-  margin-top: 25px;
   display: flex;
-  gap: 12px;
+  align-items: center;
+  padding: 0 10%;
 }
 
-.btnPrimary {
-  background: #22c55e;
-  color: #102033;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: bold;
-  cursor: pointer;
+.hero h1 {
+  font-size: 50px;
 }
 
-.btnSecondary {
-  background: #22c55e;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: bold;
-  cursor: pointer;
+.hero span {
+  color: #22c55e;
 }
 
-.mision {
-   background: #1e4f8a;
+
+.about {
   padding: 100px 10%;
   text-align: center;
+}
+
+
+.programs {
+  padding: 100px 10%;
+  background: #f5f7fa;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+
+.contact {
+  padding: 80px;
+  text-align: center;
+}
+
+
+footer {
+  padding: 20px;
+  background: #1e4f8a;
   color: white;
-}
-
-.misionContent h2 {
-  font-size: 42px;
-  color: #22c55e;
-  margin-bottom: 30px;
-}
-
-.misionContent p {
-  font-size: 20px;
-  max-width: 900px;
-  margin: auto;
-  line-height: 1.8;
-  color: #e5e7eb;
+  text-align: center;
 }

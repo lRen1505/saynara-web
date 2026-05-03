@@ -1,62 +1,153 @@
 
-import './App.css'
-import misionImg from "./assets/Fundacion Saynara.png";
-function App() {
+import { useState, useEffect, useRef } from "react";
+import "./App.css";
+
+const programs = [
+  {
+    icon: "🧒",
+    title: "Niños",
+    desc: "Programas educativos y recreativos para niños en situación vulnerable.",
+    tag: "Educación & Bienestar",
+    pw: "pw-sky",
+  },
+  {
+    icon: "🌱",
+    title: "Jóvenes",
+    desc: "Talleres, mentorías y oportunidades para jóvenes.",
+    tag: "Formación & Liderazgo",
+    pw: "pw-mint",
+  },
+  {
+    icon: "🐾",
+    title: "Animalitos",
+    desc: "Rescate, cuidado y adopción responsable.",
+    tag: "Bienestar Animal",
+    pw: "pw-peach",
+  },
+];
+
+export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        }),
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => {
+      observerRef.current.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
+  const scrollTo = (id) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
   return (
     <div className="app">
-      <nav className="navbar">
-        <div className="logo">
-          <div className="logoCircle">S</div>
-          <span>Fundación Saynara</span>
+      {/* NAVBAR */}
+      <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
+        <div className="nav-logo">
+          🤝 <span>Fundación Saynara</span>
         </div>
 
-        <div className="navLinks">
-          <a href="#inicio">Inicio</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#programas">Programas</a>
-          <a href="#contacto">Contacto</a>
-          <a href="https://www.instagram.com/saynara.pe/" target="_blank">Instagram</a>
-          <a href="https://wa.me/51999999999" target="_blank">WhatsApp</a>
-          <button>Donar</button>
-        </div>
+        <ul className="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#programas">Programas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="https://www.instagram.com/saynara.pe/" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/51999999999" target="_blank">WhatsApp</a></li>
+        </ul>
       </nav>
 
+      {/* HERO */}
       <section className="hero" id="inicio">
-        <div className="heroText">
-          <p className="tag">Voluntariado 100%</p>
-          <h1>Generando cambios con amor y solidaridad</h1>
-          <p>
-            Ayudamos a niños, jóvenes y animalitos, uniendo voluntades para crear
-            esperanza y oportunidades.
-          </p>
+        <div className="hero-content">
+          <div>
+            <h1>
+              Ayuda social con <span>amor</span>
+            </h1>
+            <p>
+              Ayudamos a niños, jóvenes y animalitos, generando impacto positivo
+              en comunidades vulnerables.
+            </p>
 
-          <div className="heroButtons">
-            <button className="btnPrimary">Quiero ayudar</button>
-            <button className="btnSecondary">Ser voluntario</button>
+            <div className="hero-btns">
+              <button onClick={() => scrollTo("programas")}>
+                Ver programas
+              </button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/saynara.pe/",
+                    "_blank"
+                  )
+                }
+              >
+                Instagram
+              </button>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="heroCard">
-          <h3>Fundación Saynara</h3>
-          <p>Únete al cambio 💙</p>
-          <img src={misionImg} alt="Somos Fundación Saynara" />
+      {/* NOSOTROS */}
+      <section className="about fade-in" id="nosotros">
+        <h2>Nuestra Misión</h2>
+        <p>
+          Contribuir al desarrollo integral y al bienestar de la población,
+          mediante programas sostenibles en educación, salud, medio ambiente y
+          protección animal.
+        </p>
+      </section>
+
+      {/* PROGRAMAS */}
+      <section className="programs" id="programas">
+        <h2 className="fade-in">Nuestros Programas</h2>
+
+        <div className="programs-grid">
+          {programs.map((p, i) => (
+            <div className="card fade-in" key={i}>
+              <div className="icon">{p.icon}</div>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+              <span>{p.tag}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="mision" id="nosotros">
-        <div className="misionContent">
-          <h2>Nuestra Misión</h2>
-          <p>
-            Contribuir al desarrollo integral y al bienestar de la población,
-            mediante el diseño e implementación de programas sostenibles en
-            educación, salud, medio ambiente y protección animal, orientados a
-            generar impacto social positivo en comunidades vulnerables.
-          </p>
+      {/* CONTACTO */}
+      <section className="contact" id="contacto">
+        <h2>Contáctanos</h2>
+
+        <div className="contact-links">
+          <a href="https://www.instagram.com/saynara.pe/" target="_blank">
+            Instagram
+          </a>
+          <a href="https://wa.me/51999999999" target="_blank">
+            WhatsApp
+          </a>
         </div>
       </section>
 
+      {/* FOOTER */}
+      <footer>
+        <p>© 2025 Fundación Saynara</p>
+      </footer>
     </div>
   );
 }
-
-export default App;
