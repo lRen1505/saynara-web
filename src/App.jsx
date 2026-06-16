@@ -1,4 +1,8 @@
 import heroImg from "./assets/Fundacion Saynara.png";
+import Escuadron4Patas from "./assets/Escuadron4Patas.jpeg";
+import SaynaraMascotas from "./assets/SaynaraMascotas.jpeg";
+import SaynaraPeludos from "./assets/SaynaraPeludos.jpeg";
+import Voluntariado from "./assets/Voluntariado.jpeg";
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 const programs = [
@@ -36,6 +40,14 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [form, setForm] = useState({ nombre: "", correo: "", ayuda: "" });
   const observerRef = useRef(null);
+  const imagenes = [
+    heroImg,
+    Escuadron4Patas,
+    SaynaraMascotas,
+    SaynaraPeludos,
+    Voluntariado,
+  ];
+  const [imagenActual, setImagenActual]= useState(0);
  
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -56,6 +68,12 @@ export default function App() {
     );
     return () => observerRef.current?.disconnect();
   }, []);
+
+  useEffect(() =>{
+    const intervalo = setInterval(() =>{
+      setImagenActual((prev) => (prev+1) % imagenes.length);
+    }, 3500); 
+  },[]);
  
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -134,7 +152,7 @@ export default function App() {
           <div className="hero-visual">
             <div className="hero-card">
               <div className="hc-top">
-                 <img src={heroImg} alt="Fundación Saynara" className="hc-image" />
+                 <img src={imagenes[imagenActual]} alt="Fundación Saynara" className="hc-image" />
                 <div className="hc-tagline">Únete al cambio</div>
                 <div className="hc-sub">@saynara.pe · Instagram</div>
               </div>

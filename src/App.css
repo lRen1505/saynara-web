@@ -210,10 +210,23 @@ body {
 .strip {
   background: var(--sky-dark);
   padding: 16px 6%;
-  display: flex; justify-content: center; align-items: center;
-  gap: 32px; flex-wrap: wrap;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
-.strip-item { font-size: 14px; font-weight: 800; color: white; display: flex; align-items: center; gap: 7px; }
+.strip-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+}
 .strip-div  { color: rgba(255, 255, 255, 0.4); font-size: 20px; }
  
 /* ── ABOUT ── */
@@ -240,7 +253,7 @@ body {
   color: var(--text-h); letter-spacing: -0.5px;
 }
 .section-title .sky { color: var(--sky-dark); }
-.about-p { font-size: 16px; line-height: 1.8; color: var(--text-soft); margin-bottom: 18px; }
+.about-p { font-size: 16px; line-height: 1.8; color: var(--text-soft); margin-bottom: 18px;text-align: justify; }
 .about-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .about-chip {
   display: flex; align-items: center; gap: 8px;
@@ -303,6 +316,7 @@ body {
   width: 64px; height: 64px; border-radius: 18px;
   display: flex; align-items: center; justify-content: center;
   font-size: 30px; margin-bottom: 20px;
+  margin: 0 auto 20px auto;
 }
 .pw-sky   { background: var(--sky);   }
 .pw-mint  { background: var(--mint);  }
