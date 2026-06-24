@@ -80,7 +80,7 @@ export default function App() {
  
   const sendWhatsApp = () => {
     const msg = `¡Hola! Me gustaría ser voluntario/a en Fundación Saynara 💙\nNombre: ${form.nombre}\nCorreo: ${form.correo}\nQuiero ayudar: ${form.ayuda}`;
-    window.open(`https://wa.me/51999999999?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/51920320396?text=${encodeURIComponent(msg)}`, "_blank");
   };
  
   return (
@@ -125,7 +125,18 @@ export default function App() {
               crear esperanza y oportunidades en comunidades vulnerables.
             </p>
             <div className="hero-btns">
-              <button className="btn-main" onClick={() => scrollTo("voluntario")}>
+            <button
+              className="btn-main"
+              onClick={() => {
+                  const msg =
+                "¡Hola! 💙 Estoy interesado(a) en apoyar a Fundación Saynara. ¿Podrían brindarme más información sobre voluntariado y formas de colaboración?";
+      
+                window.open(
+                `https://wa.me/51920320396?text=${encodeURIComponent(msg)}`,
+                "_blank"
+                    );
+                 }}
+              >
                 💚 Quiero ayudar
               </button>
               <button className="btn-second" onClick={() => scrollTo("programas")}>
@@ -277,7 +288,7 @@ export default function App() {
             <div className="vol-btns">
               <button
                 className="btn-main"
-                onClick={() => window.open("https://wa.me/51999999999", "_blank")}
+                onClick={() => window.open("https://wa.me/51920320396", "_blank")}
               >
                 💬 WhatsApp
               </button>
@@ -352,7 +363,7 @@ export default function App() {
             @saynara.pe en Instagram
           </a>
           <a
-            href="https://wa.me/51999999999"
+            href="https://wa.me/51920320396"
             target="_blank"
             rel="noreferrer"
             className="social-card sc-wa"
@@ -386,7 +397,7 @@ export default function App() {
             <div className="footer-col-title">Contacto</div>
             <ul>
               <li><a href="https://www.instagram.com/saynara.pe/" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://wa.me/51999999999" target="_blank" rel="noreferrer">WhatsApp</a></li>
+              <li><a href="https://wa.me/51920320396" target="_blank" rel="noreferrer">WhatsApp</a></li>
               <li><a href="#voluntario">Donar</a></li>
             </ul>
           </div>
